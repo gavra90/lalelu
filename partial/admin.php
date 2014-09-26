@@ -62,6 +62,7 @@
 </style>
 </head>
 <body>
+
     <div class="page-header text-center">
         <h1>Welcome admin <small></small></h1>
     </div>
@@ -103,7 +104,14 @@
 
     </div>
 </div>   
+  <?php
+       if(isset($_GET['err'])){
+           $err=$_GET['err'];
+           echo "<h2 style='color:Red;text-align: center;'>Wrong username or password</h2>";
+       }
+    
 
+    ?>
     <!-- jQuery Version 1.11.0 -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../js/jquery-1.11.0.js">\x3C/script>')</script>

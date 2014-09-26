@@ -41,7 +41,8 @@ ob_start();
          
              session_start();
              $_SESSION["myusername"] = "NIJE DRASKO!";
-             header("location:/partial/admin.php");
+           
+             header("location:/partial/admin.php?err=1");
         }
         }
         else{
