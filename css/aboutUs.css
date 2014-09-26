@@ -1,0 +1,122 @@
+body {
+    padding-top: 20px;
+}
+#carousel1 .nav a small {
+    display: block;
+}
+#carousel1 .nav {
+    background: #eee;
+}
+.nav-justified > li > a {
+    border-radius: 0px;
+}
+.nav-pills > li[data-slide-to="0"].active a {
+    background-color: #b4d9a7;
+}
+.nav-pills > li[data-slide-to="1"].active a {
+    background-color: #4f77cb;
+}
+.nav-pills > li[data-slide-to="2"].active a {
+    background-color: #d11e4f;
+}
+
+
+
+@media only screen and (max-width: 480px), only screen and (max-device-width: 480px)  {
+   .menu {
+       display: none !important;
+   }
+
+    .navbar-wrapper {
+        display: block !important;
+    }
+}
+
+.navbar-wrapper {
+        display: none;
+    }
+
+.logo {
+   
+    width: 150px;
+    text-align: center;
+    /*padding-top: 17px;
+    margin-right: 50px;*/
+    background: url(../img/logo.jpg) no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+ .bg {
+    display: table;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url(../img/bg.jpg) no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.menu {
+    margin: 0 auto;
+    padding-right: 140px;
+    text-align: center;
+}
+.menu a {
+    text-decoration: none;
+}
+.cloud {
+    /*position: relative;*/    
+    display: inline-block;
+    width: 80px;
+    height: 60px;
+    text-align: center;
+    padding-top: 17px;
+    margin-right: 50px;
+    background: url(../img/cloud.png) no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+.cloud :hover {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.jumbotron {
+    margin: 0 auto;
+    max-width: 800px;
+    opacity: 0.9;
+}
+
+/*staff*/
+.glyphicon-lg
+{
+    font-size:4em
+}
+.info-block
+{
+    border-right:5px solid #E6E6E6;margin-bottom:25px
+}
+.info-block .square-box
+{
+    width:100px;min-height:110px;margin-right:22px;text-align:center!important;background-color:#676767;padding:20px 0
+}
+.info-block.block-info
+{
+    border-color:#20819e
+}
+.info-block.block-info .square-box
+{
+    background-color:#20819e;color:#FFF
+}
+
+#input-search {
+    margin-bottom: 10px
+}
+/*jkraj staff*/
