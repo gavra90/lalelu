@@ -82,15 +82,15 @@
                                     <i class="fa fa-arrows-v"></i>    Login Form    <i class="fa fa-arrows-v"></i></h3>
                             </div>
                             <div class="panel-body">
-                                <form method="post">
+                                <form method="post" action="../checklogin.php">
                                 <div class="form-group">
-                                    <input type="text" class="form-control input-lg" placeholder="Username" required>
+                                    <input name="myusername" id="myusername" type="text" class="form-control input-lg" placeholder="Username" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control input-lg" placeholder="Password" required>
+                                    <input name="mypassword" id="mypassword" type="password" class="form-control input-lg" placeholder="Password" required>
                                 </div>                                
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Sign In</button>
+                                    <button id="login" type="submit" class="btn btn-primary btn-lg btn-block">Sign In</button>
                                 </div>
                                </form>
                             </div>
@@ -102,11 +102,7 @@
         </div>
 
     </div>
-</div>
-
-
-
-
+</div>   
 
     <!-- jQuery Version 1.11.0 -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>

@@ -13,7 +13,7 @@
         <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/plug-ins/a5734b29083/integration/jqueryui/dataTables.jqueryui.js"></script>
          <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-          <script type="text/javascript" charset="utf8" src="/js/index3.js"></script>
+          <script type="text/javascript" charset="utf8" src="/js/index4.js"></script>
         <script src="../js/inputFile.js"></script>
         <meta charset="utf-8" />
         <title></title>
@@ -61,33 +61,31 @@
     </head>
     <body>
     <div class="container">
+
     <div class="page-header">
         <h1>View and insert news <small>welcome Admin</small></h1>
     </div>
 <?php
 session_start();
-//echo $_SESSION["myusername"];
 if($_SESSION["myusername"] != "drasko"){
 header("location:partial/admin.php");
 }
 ?>
-
-      <?php
-        function ucitaj(){     
-        $con=mysqli_connect("localhost","root","","lalalulu");
+</div>   
+<div class="container">   
+</div>
+        <?php
+            $con=mysqli_connect("localhost","root","","lalalulu");
         if(mysqli_connect_error())
             echo mysqli_connect_error();
          else{
     
-            $result = mysqli_query($con,"SELECT * FROM news");
+           if($result = mysqli_query($con,"SELECT * FROM photos")){
             //"<select id=\"ID_FunkcijeZadatka\" name=\"ID_FunkcijeZadatka\" style=\"width:775px;\">"
             echo "<div class=\"table-responsive\">";
             echo "<table id=\"tabela\" class=\"display dataTable table table-bordered table-responsive\">
             <thead>
-                  <tr>
-                  <th>Title</th>
-                  <th>Content</th>
-                  <th>Date</th>
+                  <tr>                  
                   <th>Photo</th>
                   <th>Delete</th>
                   </tr>
@@ -97,11 +95,12 @@ header("location:partial/admin.php");
             while($row = mysqli_fetch_array($result)) {
                 
                 echo "<tr>";
-                echo "<td>" . $row['Title'] . "</td>";
-                echo "<td>" . $row['Content'] . "</td>";               
-                echo "<td>" . $row['Date'] . "</td>";
-                if($row['Image']!=NULL)
-                    echo "<td><i class=\"fa fa-camera\"></i></td>";
+                //echo "<td>" . $row['Title'] . "</td>";
+                //echo "<td>" . $row['Content'] . "</td>";               
+                //echo "<td>" . $row['Date'] . "</td>";
+                if($row['photo']!=NULL)
+                echo '<td><img src="data:image/jpeg;base64,' . base64_encode( $row['photo'] ) . '" /></td>';
+                   // echo "<td><i class=\"fa fa-camera\"></i></td>";
                 else
                     echo "<td><i class=\"fa fa-times\"></i></td>";
                 echo "<td><i class=\"fa fa-trash-o del\" id=". $row['Id'] . "></i></td>";
@@ -112,25 +111,19 @@ header("location:partial/admin.php");
                 echo "</table>";
                 echo "</div>";
 
+                }
+                else
+                echo "No photo table!";
             }
-            mysqli_close($con);
-        }
-        ucitaj(); 
-?>
-</div>   
-<div class="container">
+            mysqli_close($con);        
+        ?>
+        <div class="container">
     <div class="row"> 
     <h3>Insert news</h3>   
         <div class="form" role="form">  
-            <form method="post" enctype="multipart/form-data" class="jumbotron form-group" action="insertNews.php" >
+            <form method="post" enctype="multipart/form-data" class="jumbotron form-group" action="insertPhoto.php" >
             <!-- image-preview-filename input [CUT FROM HERE]-->
-            <fieldset>
-                  <legend>Title: </legend>
-                <input type="text" name="title" class="form-control" required/>
-                <!--Prezime:
-                <input type="text" name="" required/>-->
-                <legend>Content: </legend>
-                <textarea name="content" class="form-control" required></textarea>
+            <fieldset>                  
             <legend>Image Upload</legend>
             <div class="input-group image-preview">
                 <input type="text" name="photo" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
@@ -155,8 +148,7 @@ header("location:partial/admin.php");
         </form>
         </div>
     </div>
-</div>        <div class="container">
-
+</div>
 </div>
     </body>
 </html>
