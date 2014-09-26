@@ -155,19 +155,54 @@
         <div class="col-lg-12">
             <input type="search" class="form-control" id="input-search" placeholder="Search by Name..." >
         </div>
+
+
         <div class="searchable-container">
-            <div class="items col-xs-12 col-sm-6 col-md-6 col-lg-6 clearfix">
+    <?php      
+    $con=mysqli_connect("localhost","root","","lalalulu");
+    if(mysqli_connect_error())
+        echo mysqli_connect_error();        
+    else{    
+        $result = mysqli_query($con,"SELECT * FROM employee");
+
+        while($row = mysqli_fetch_array($result)) { 
+            echo "<div class=\"items col-xs-12 col-sm-6 col-md-6 col-lg-6 clearfix\">";
+                echo "<div class=\"info-block block-info clearfix\">";
+                     echo "<div class=\"square-box pull-left\">";
+                        if($row['Photo']!=NULL){
+                           echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['Photo'] ) . '" width=\'75px;\' height=\'75px;\'/>';
+                        
+                        }
+                        else{
+                            echo "<span class=\"glyphicon glyphicon-user glyphicon-lg\"></span>";
+                        }
+                        echo "</div>";
+                        echo "<h4>Name:" . $row['Name'] . "</h4>";
+                        echo "<p>Title: Teacher</p>";
+                        echo " <span>Phone:" . $row['Phone'] ."</span></br>
+                                <span>Email:" . $row['Email'] ."</span>";
+                        echo "</div>
+                            </div>";
+       }
+    }     
+    mysqli_close($con);      
+     
+?>
+
+
+
+            <!--<div class="items col-xs-12 col-sm-6 col-md-6 col-lg-6 clearfix">
                <div class="info-block block-info clearfix">
                     <div class="square-box pull-left">
-                        <span class="glyphicon glyphicon-user glyphicon-lg"></span>
+                       <img src="/img/1.jpg" alt="Nemas slike" width="75px;" height="75px;"/>
                     </div>
                     <h4>Name: Tyreese Burn</h4>
                     <p>Title: Teacher</p>
                     <span>Phone: 555-555-5555</span></br>
                     <span>Email: sample@company.com</span>
                 </div>
-            </div>
-            <div class="items col-xs-12 col-sm-12 col-md-6 col-lg-6 clearfix">
+            </div>-->
+            <!--<div class="items col-xs-12 col-sm-12 col-md-6 col-lg-6 clearfix">
                <div class="info-block block-info clearfix">
                     <div class="square-box pull-left">
                         <span class="glyphicon glyphicon-user glyphicon-lg"></span>
@@ -199,8 +234,14 @@
                     <span>Phone: 555-555-5555</span></br>
                     <span>Email: sample@company.com</span>
                 </div>
-            </div>
+            </div>-->
         </div>
+
+
+
+
+
+
 	</div>
 </div>
         <!--kraj staff-->
