@@ -178,7 +178,7 @@
                         }
                         echo "</div>";
                         echo "<h4>Name:" . $row['Name'] . "</h4>";
-                        echo "<p>Title: Teacher</p>";
+                        echo "<p>Title: " . $row['Title'] . "</p>";
                         echo " <span>Phone:" . $row['Phone'] ."</span></br>
                                 <span>Email:" . $row['Email'] ."</span>";
                         echo "</div>
