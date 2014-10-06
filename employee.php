@@ -54,6 +54,9 @@
     /*kraj za unos*/
     .del:hover {
         cursor: pointer;
+    }
+    .edit:hover {
+        cursor: pointer;
     } 
     
            
@@ -106,7 +109,8 @@ header("location:partial/admin.php");
                     echo "<td><i class=\"fa fa-camera\"></i></td>";
                 else
                     echo "<td><i class=\"fa fa-times\"></i></td>";
-                echo "<td><i class=\"fa fa-trash-o del\" id=". $row['ID'] . "></i></td>";
+             
+                echo "<td><i class=\"fa fa-trash-o del\" id=". $row['ID'] . "></i> &nbsp&nbsp&nbsp <i class=\"fa fa-pencil-square-o edit\" id=". $row['ID'] . "></i></td>";
                 echo "</tr>"; 
                 }
 
@@ -128,15 +132,15 @@ header("location:partial/admin.php");
             <!-- image-preview-filename input [CUT FROM HERE]-->
             <fieldset>
                   <legend>Name: </legend>
-                <input type="text" name="name" class="form-control" required/>
+                <input type="text" id="name" name="name" class="form-control" required/>
                 <!--Prezime:
                 <input type="text" name="" required/>-->
                 <legend>Title: </legend>
-                <input type="text" name="title" class="form-control" required/>
+                <input type="text" id="title" name="title" class="form-control" required/>
                <legend>Email: </legend>
-                <input type="email" name="email" class="form-control" required/>
+                <input type="email" id="email" name="email" class="form-control" required/>
                <legend>Phone: </legend>
-                <input type="tel" name="phone" class="form-control" required/>
+                <input type="tel" id="phone" name="phone" class="form-control" required/>
             <legend>Image Upload</legend>
             <div class="input-group image-preview">
                 <input type="text" name="photo" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
@@ -157,7 +161,9 @@ header("location:partial/admin.php");
             <p id="btnSubNew">
             <input type="submit" id="btn_Upload" class="btn btn-primary btn-lg" value="Save"/>
             </p>
-            </fieldset>        
+            </fieldset>  
+                <input id="flag" name="flag" type="text" value="0"/>  
+                <input id="id" name="id" type="text"/>      
         </form>
         </div>
     </div>
