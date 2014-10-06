@@ -22,7 +22,7 @@ $(function () {
         var $id = $this.attr('id');
 
         $.ajax({
-            url: "delNews.php",
+            url: "delEmployee.php",
             type: "POST",
             data: {
                 Id: $id
@@ -36,7 +36,7 @@ $(function () {
                     .row(target_row)
                     .remove()
                     .draw();
-                    alert("News was successfuly deleted.");
+                    alert("Employee was successfuly deleted.");
                 }
                 else {
 
