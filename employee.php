@@ -58,11 +58,55 @@
     .edit:hover {
         cursor: pointer;
     } 
-    
-           
+    .logo {
+   
+    width: 150px;
+    text-align: center;
+    /*padding-top: 17px;
+    margin-right: 50px;*/
+    background: url(../img/logo.jpg) no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+    #id, #flag {
+        display: none;
+    }     
         </style>
     </head>
     <body>
+         <!--nav-->
+      <div class="navbar-wrapper">
+      <div class="container">
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand logo" href="#"></a>
+            </div>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li ><a href="/index3.php">News</a></li>
+                <li class="active"><a href="/employee.php">Employee</a></li>
+                  <li><a href="/index4.php">Photo</a></li>
+              </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Log out</a></li>
+                </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+         <!--kraj nav-->
     <div class="container">
     <div class="page-header">
         <h1>Employee <small>welcome Admin</small></h1>
