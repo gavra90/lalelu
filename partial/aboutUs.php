@@ -1,4 +1,16 @@
 <?php
+    require('../lang/lan_en.php');
+    require('../lang/lan_es.php');
+
+    $lan = isset($_GET['lan']) ? $_GET['lan'] : 'EN';
+    switch ($lan) {
+    case 'ES':
+    $TEXT = $TEXT_ES;
+    break;
+    case 'EN':
+    $TEXT = $TEXT_EN;
+    break;
+}
 
 ?>
 
@@ -59,7 +71,40 @@
          <!--kraj nav-->
          
         <!--cloud menu-->
-         <div class="menu row text-vertical-center">
+          <div class="menu row text-vertical-center">
+                    <div id="menuBall1" class="menuBall">
+                        <a href="/index.php?lan=<?php echo $lan?>" class="ball blueball">
+                            <div class="menuText">
+                               <?php echo($TEXT['home']); ?>
+                            </div>
+                        </a>
+                    </div>
+                <div id="menuBall2" class="menuBall">
+                    <a href="/partial/aboutUs.php?lan=<?php echo $lan?>" class="ball blueball">
+                        <div class="menuText">
+                           <?php echo($TEXT['aboutUs']); ?>
+                        </div>
+                    </a>
+                </div>
+                <div id="menuBall3" class="menuBall">
+                    <a href="#" class="ball blueball">
+                        <div class="menuText">
+                            <?php echo($TEXT['photo']); ?>
+                        </div>
+                    </a>
+                </div>
+                <div id="menuBall4" class="menuBall">
+                    <a href="partial/contact.php?lan=<?php echo $lan?>" class="ball blueball">
+                        <div class="menuText">
+                            <?php echo($TEXT['contacts']); ?>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+
+
+         <!--<div class="menu row text-vertical-center">
                     <div id="menuBall1" class="menuBall">
                         <a href="/index.php" class="ball blueball">
                             <div class="menuText">
@@ -88,7 +133,7 @@
                         </div>
                     </a>
                 </div>
-            </div>
+            </div>-->
         <!--kraj za cloud menu-->
     <!--courasel za about us-->
         <!--<div class="container">

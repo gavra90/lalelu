@@ -1,3 +1,19 @@
+<?php
+   require('../lang/lan_en.php');
+    require('../lang/lan_es.php');
+
+    $lan = isset($_GET['lan']) ? $_GET['lan'] : 'EN';
+    switch ($lan) {
+    case 'ES':
+    $TEXT = $TEXT_ES;
+    break;
+    case 'EN':
+    $TEXT = $TEXT_EN;
+    break;
+}
+
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
