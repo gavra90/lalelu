@@ -1,11 +1,11 @@
 <?php
     require('../lang/lan_en.php');
-    require('../lang/lan_es.php');
+    require('../lang/lan_srb.php');
 
     $lan = isset($_GET['lan']) ? $_GET['lan'] : 'EN';
     switch ($lan) {
-    case 'ES':
-    $TEXT = $TEXT_ES;
+    case 'SRB':
+    $TEXT = $TEXT_SRB;
     break;
     case 'EN':
     $TEXT = $TEXT_EN;
@@ -188,15 +188,15 @@
         <!--kraj za courasel-->
     <div class="jumbotron ">
         <div class="container">
-            <h1>About Us</h1>
+            <h1><?php echo $TEXT['aboutUS_title']?></h1>
             <p>We are proud to offer you quality education apps exclusively available through itunes.  All of our games are designed to work on Apple’s iPhone, iPod touch and iPad.</p>
             <p>Your child will learn through a concept called “errorless learning”.  As the name implies, errorless learning refers to teaching procedures that are designed in such a way that the learner does not have to, and does not, make repeated mistakes as he or she learns new information.  They are shown the appropriate response in the hope that they will get it correctly the next time.</p>
-            <p><a href="/partial/contact.html" class="btn btn-primary btn-lg" role="button">Contact Us</a></p>
+            <p><a href="/partial/contact.php?lan=<?php echo $lan?>" class="btn btn-primary btn-lg" role="button"><?php echo $TEXT['btn_aboutUs_Contact']?></a></p>
         </div>
         <!--staff-->
         <div class="container">
 	<div class="row">
-		<h2>Our staff</h2>
+		<h2><?php echo $TEXT['aboutUS_OurEmp']?></h2>
         <div class="col-lg-12">
             <input type="search" class="form-control" id="input-search" placeholder="Search by Name..." >
         </div>

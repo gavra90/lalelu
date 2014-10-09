@@ -3,12 +3,12 @@
 
 <?php
     require('lang/lan_en.php');
-    require('lang/lan_es.php');
+    require('lang/lan_srb.php');
 
     $lan = isset($_GET['lan']) ? $_GET['lan'] : 'EN';
     switch ($lan) {
-    case 'ES':
-    $TEXT = $TEXT_ES;
+    case 'SRB':
+    $TEXT = $TEXT_SRB;
     break;
     case 'EN':
     $TEXT = $TEXT_EN;
@@ -50,7 +50,7 @@
             <select onchange="window.location.href= this.form.URL.options[this.form.URL.selectedIndex].value" name="URL">
             <option>Select language</option>
             <option value="index.php?lan=EN">English</option>
-            <option value="index.php?lan=ES">Español</option>        
+            <option value="index.php?lan=SRB">Srpski</option>        
             </select>
         </form>
 

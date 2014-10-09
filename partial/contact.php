@@ -1,11 +1,11 @@
 <?php
    require('../lang/lan_en.php');
-    require('../lang/lan_es.php');
+    require('../lang/lan_srb.php');
 
     $lan = isset($_GET['lan']) ? $_GET['lan'] : 'EN';
     switch ($lan) {
-    case 'ES':
-    $TEXT = $TEXT_ES;
+    case 'SRB':
+    $TEXT = $TEXT_SRB;
     break;
     case 'EN':
     $TEXT = $TEXT_EN;
@@ -64,32 +64,32 @@
         <!--meni-->
             <div class="text-vertical-center contactMenu">
             <h1>Lalelu Kindergarden</h1>
-            <div class="menu row">
+           <div class="menu row">
                     <div id="menuBall1" class="menuBall">
-                        <a href="/index.php" class="ball blueball">
+                        <a href="/index.php?lan=<?php echo $lan?>" class="ball blueball">
                             <div class="menuText">
-                                Home
+                               <?php echo($TEXT['home']); ?>
                             </div>
                         </a>
                     </div>
                 <div id="menuBall2" class="menuBall">
-                    <a href="/partial/aboutUs.php" class="ball blueball">
+                    <a href="/partial/aboutUs.php?lan=<?php echo $lan?>" class="ball blueball">
                         <div class="menuText">
-                            About Us
+                           <?php echo($TEXT['aboutUs']); ?>
                         </div>
                     </a>
                 </div>
                 <div id="menuBall3" class="menuBall">
                     <a href="#" class="ball blueball">
                         <div class="menuText">
-                            Photo
+                            <?php echo($TEXT['photo']); ?>
                         </div>
                     </a>
                 </div>
                 <div id="menuBall4" class="menuBall">
-                    <a href="#partial/contact.html" class="ball blueball">
+                    <a href="partial/contact.php?lan=<?php echo $lan?>" class="ball blueball">
                         <div class="menuText">
-                            Contact
+                            <?php echo($TEXT['contacts']); ?>
                         </div>
                     </a>
                 </div>
