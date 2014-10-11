@@ -19,7 +19,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Contact</title>
+        <title> <?php echo($TEXT['contact_title']); ?></title>
             <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
         <!-- Custom CSS -->
@@ -32,6 +32,17 @@
 
     </head>
     <body class="bg">
+         
+        <form>
+            <select onchange="window.location.href= this.form.URL.options[this.form.URL.selectedIndex].value" name="URL">
+            <option>Select language</option>
+            <option value="contact.php?lan=EN">English</option>
+            <option value="contact.php?lan=SRB">Srpski</option>        
+            </select>
+        </form>
+
+
+
          <div class="navbar-wrapper">
       <div class="container">
 
@@ -103,39 +114,39 @@
             <div class="well well-sm">
                 <form class="form-horizontal" method="post">
                     <fieldset>
-                        <legend class="text-center contactCaption">Contact us</legend>
+                        <legend class="text-center contactCaption"><?php echo($TEXT['contact_legend']); ?></legend>
                         <div class="form-group">
                             <div class="col-md-10 col-md-offset-1">
-                                <input id="fname" name="name" type="text" placeholder="First Name" class="form-control">
+                                <input id="fname" name="name" type="text" placeholder=<?php  echo "\"".($TEXT['contact_Fname']) . "\""; ?> class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-10 col-md-offset-1">
-                                <input id="lname" name="name" type="text" placeholder="Last Name" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-10 col-md-offset-1">
-                                <input id="email" name="email" type="text" placeholder="Email Address" class="form-control">
+                                <input id="lname" name="name" type="text" placeholder=<?php  echo "\"". ($TEXT['contact_Lname']) . "\""; ?> class="form-control">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-md-10 col-md-offset-1">
-                                <input id="phone" name="phone" type="text" placeholder="Phone" class="form-control">
+                                <input id="email" name="email" type="text" placeholder=<?php  echo "\"". ($TEXT['contact_Email']) . "\""; ?> class="form-control">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-md-10 col-md-offset-1">
-                                <textarea class="form-control" id="message" name="message" placeholder="Enter your massage for us here. We will get back to you within 2 business days." rows="7"></textarea>
+                                <input id="phone" name="phone" type="text" placeholder=<?php  echo "\"". ($TEXT['contact_phone']) . "\""; ?> class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-1">
+                                <textarea class="form-control" id="message" name="message" placeholder=<?php  echo "\"". ($TEXT['contact_message']) . "\""; ?> rows="7"></textarea>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                                <button type="submit" class="btn btn-primary btn-lg"><?php  echo ($TEXT['contact_BtnSubmit']); ?></button>
                             </div>
                         </div>
                     </fieldset>
@@ -145,9 +156,9 @@
         <div class="col-md-6">
             <div>
                 <div class="panel panel-default">
-                    <div class="text-center contactCaption">Our Office</div>
+                    <div class="text-center contactCaption"><?php  echo ($TEXT['contact_ourOffice']); ?></div>
                     <div class="panel-body text-center">
-                        <h4>Address</h4>
+                        <h4><?php  echo ($TEXT['contact_adressOfice']); ?></h4>
                         <div>
                         2217 Washington Blvd<br />
                         Washington DC<br />
