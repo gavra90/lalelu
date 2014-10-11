@@ -141,7 +141,19 @@
  
          $counter=1;
        echo "<div class=\"carousel-inner\">";   
-        while($row = mysqli_fetch_array($result)) {  
+        while($row = mysqli_fetch_array($result)) {
+            if($lan=="EN"){
+               $sadrzaj=$row['Content'];
+               $naslov=$row['Title'];
+            }  
+            else if($lan=="SRB"){
+                 $sadrzaj=$row['Content_SRB'];
+                 $naslov=$row['Title_SRB'];
+            }
+            else{
+                 $sadrzaj=$row['Content_DE'];
+                  $naslov=$row['Title_DE'];
+            }
            if($counter==1)
             echo "<div class=\"item active\">";
             else
@@ -149,13 +161,13 @@
                 if($row['Image']!=NULL){
                     echo '<img src="data:image/jpeg;base64,' . base64_encode( $row['Image'] ) . '" />';
                 echo "<div class=\"carousel-caption\">";
-                    echo "<h3 class=\"title\">" . $row['Title'] . "</h3>";
-                    echo "<p class=\"content\">" . $row['Content'] . "</p>";
+                    echo "<h3 class=\"title\">" . $naslov . "</h3>";
+                    echo "<p class=\"content\">" . $sadrzaj . "</p>";
                 echo "</div>";
                 }else{
                     echo "<div style=\"height: 330px;\">"; 
-                     echo "<h3 class=\"title\">" . $row['Title'] . "</h3>";
-                     echo "<p class=\"content\">" . $row['Content'] . "</p>";
+                     echo "<h3 class=\"title\">" . $naslov . "</h3>";
+                     echo "<p class=\"content\">" .$sadrzaj . "</p>";
                      echo "</div>"; 
                 }
             echo "</div>";  
