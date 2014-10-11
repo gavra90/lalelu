@@ -18,7 +18,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>About us</title>
+        <title><?php echo($TEXT['aboutUs_title']); ?></title>
         <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
 
@@ -198,7 +198,7 @@
 	<div class="row">
 		<h2><?php echo $TEXT['aboutUS_OurEmp']?></h2>
         <div class="col-lg-12">
-            <input type="search" class="form-control" id="input-search" placeholder="Search by Name..." >
+            <input type="search" class="form-control" id="input-search" placeholder=<?php echo "\"" . $TEXT['aboutUs_Search']. "\""?> >
         </div>
 
 
@@ -222,10 +222,10 @@
                             echo "<span class=\"glyphicon glyphicon-user glyphicon-lg\"></span>";
                         }
                         echo "</div>";
-                        echo "<h4>Name:" . $row['Name'] . "</h4>";
-                        echo "<p>Title: " . $row['Title'] . "</p>";
-                        echo " <span>Phone:" . $row['Phone'] ."</span></br>
-                                <span>Email:" . $row['Email'] ."</span>";
+                        echo "<h4>" . $TEXT['aboutUs_name']. ": " . $row['Name'] . "</h4>";
+                        echo "<p>". $TEXT['aboutUs_titleEmp']. ": " . $row['Title'] . "</p>";
+                        echo " <span>". $TEXT['aboutUs_phone']. ": " . $row['Phone'] ."</span></br>
+                                <span>". $TEXT['aboutUs_email']. ": " . $row['Email'] ."</span>";
                         echo "</div>
                             </div>";
        }
