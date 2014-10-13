@@ -13,7 +13,7 @@
         <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/plug-ins/a5734b29083/integration/jqueryui/dataTables.jqueryui.js"></script>
          <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-          <script type="text/javascript" charset="utf8" src="/js/index4.js"></script>
+          <script type="text/javascript" charset="utf8" src="/js/AboutUsAdm.js"></script>
         <script src="../js/inputFile.js"></script>
         <meta charset="utf-8" />
         <title></title>
@@ -54,6 +54,9 @@
     /*kraj za unos*/
     .del:hover {
         cursor: pointer;
+    }
+    .edit:hover {
+        cursor: pointer;
     } 
     .logo {
    
@@ -67,7 +70,9 @@
     background-size: cover;
     -o-background-size: cover;
 }
-           
+    #id, #flag {
+        display: none;
+    }     
         </style>
     </head>
     <body>
@@ -89,9 +94,9 @@
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 <li ><a href="/index3.php">News</a></li>
-                <li ><a href="/employee.php">Employee</a></li>
-                  <li class="active"><a href="/index4.php">Photo</a></li>
-                  <li><a href="/AboutUsAdm.php">AboutUs</a></li>
+                <li class="active"><a href="/employee.php">Employee</a></li>
+                <li><a href="/index4.php">Photo</a></li>
+                <li><a href="/AboutUsAdm.php">AboutUs</a></li>
               </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="../logout.php">Log out</a></li>
@@ -104,33 +109,32 @@
     </div>
          <!--kraj nav-->
     <div class="container">
-
     <div class="page-header">
-        <h1>View and insert news <small>welcome Admin</small></h1>
+        <h1>AboutUs <small>welcome Admin</small></h1>
     </div>
 <?php
 session_start();
+//echo $_SESSION["myusername"];
 if($_SESSION["myusername"] != "drasko"){
 header("location:partial/admin.php");
 }
 ?>
-</div>   
-<div class="container">   
-</div>
-        <?php
-            $con=mysqli_connect("localhost","root","","lalalulu");
+
+      <?php
+        function ucitaj(){     
+        $con=mysqli_connect("localhost","root","","lalalulu");
         if(mysqli_connect_error())
             echo mysqli_connect_error();
          else{
     
-           if($result = mysqli_query($con,"SELECT * FROM photos")){
+            $result = mysqli_query($con,"SELECT * FROM aboutus");
             //"<select id=\"ID_FunkcijeZadatka\" name=\"ID_FunkcijeZadatka\" style=\"width:775px;\">"
             echo "<div class=\"table-responsive\">";
-            echo "<table id=\"tabela\" class=\"display dataTable table table-bordered table-responsive\">
+            echo "<table id=\"tabelaEMP\" class=\"display dataTable table table-bordered table-responsive\">
             <thead>
-                  <tr>                  
-                  <th>Photo</th>
-                  <th>Delete</th>
+                  <tr>
+                  <th>Text</th>     
+                  <th></th>      
                   </tr>
             </thead>"; 
                   echo "<tbody>";
@@ -138,15 +142,8 @@ header("location:partial/admin.php");
             while($row = mysqli_fetch_array($result)) {
                 
                 echo "<tr>";
-                //echo "<td>" . $row['Title'] . "</td>";
-                //echo "<td>" . $row['Content'] . "</td>";               
-                //echo "<td>" . $row['Date'] . "</td>";
-                if($row['photo']!=NULL)
-                echo '<td style="width:200px"><img style="width:130px; height:115px;" src="data:image/jpeg;base64,' . base64_encode( $row['photo'] ) . '" /></td>';
-                   // echo "<td><i class=\"fa fa-camera\"></i></td>";
-                else
-                    echo "<td><i class=\"fa fa-times\"></i></td>";
-                echo "<td><i class=\"fa fa-trash-o del\" id=". $row['Id'] . "></i></td>";
+                echo "<td>" . $row['Text'] . "</td>";       
+                echo "<td><i class=\"fa fa-trash-o del\" id=". $row['ID'] . "></i> &nbsp&nbsp&nbsp <i class=\"fa fa-pencil-square-o edit\" id=". $row['ID'] . "></i></td>";
                 echo "</tr>"; 
                 }
 
@@ -154,44 +151,32 @@ header("location:partial/admin.php");
                 echo "</table>";
                 echo "</div>";
 
-                }
-                else
-                echo "No photo table!";
             }
-            mysqli_close($con);        
-        ?>
-        <div class="container">
+            mysqli_close($con);
+        }
+        ucitaj(); 
+?>
+</div>   
+<div class="container">
     <div class="row"> 
-    <h3>Insert news</h3>   
+    <h3>Insert text</h3>   
         <div class="form" role="form">  
-            <form method="post" enctype="multipart/form-data" class="jumbotron form-group" action="insertPhoto.php" >
+            <form method="post" enctype="multipart/form-data" class="jumbotron form-group" action="InsertAboutUs.php" >
             <!-- image-preview-filename input [CUT FROM HERE]-->
-            <fieldset>                  
-            <legend>Image Upload</legend>
-            <div class="input-group image-preview">
-                <input type="text" name="photo" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
-                <div class="input-group-btn">
-                    <!-- image-preview-clear button -->
-                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
-                        <span class="glyphicon glyphicon-remove"></span> Clear
-                    </button>
-                    <!-- image-preview-input -->
-                    <div class="btn btn-default image-preview-input">
-                        <span class="glyphicon glyphicon-folder-open"></span>
-                        <span class="image-preview-input-title">Browse</span>
-                        <input type="file" accept="image/png, image/jpeg, image/gif" name="photo"/> <!-- rename it -->
-                    </div>
-                    <!--<p class="help-block">Example block-level help text here.</p>-->
-                </div>
-            </div><!-- /input-group image-preview [TO HERE]--> 
+            <fieldset>
+                  <legend>Text: </legend>
+                <input type="text" id="text" name="text" class="form-control" required/>
             <p id="btnSubNew">
             <input type="submit" id="btn_Upload" class="btn btn-primary btn-lg" value="Save"/>
             </p>
-            </fieldset>        
+            </fieldset>  
+                <input id="flag" name="flag" type="text" value="0"/>  
+                <input id="id" name="id" type="text"/>      
         </form>
         </div>
     </div>
-</div>
+</div>        <div class="container">
+
 </div>
     </body>
 </html>
