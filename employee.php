@@ -98,7 +98,7 @@
                   <li><a href="/index4.php">Photo</a></li>
               </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Log out</a></li>
+                    <li><a href="../logout.php">Log out</a></li>
                 </ul>
             </div>
           </div>
