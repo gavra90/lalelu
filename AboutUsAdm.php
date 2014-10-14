@@ -133,7 +133,13 @@ header("location:partial/admin.php");
             echo "<table id=\"tabelaEMP\" class=\"display dataTable table table-bordered table-responsive\">
             <thead>
                   <tr>
+<<<<<<< HEAD
+                  <th>Text[en]</th>
+                  <th>Text[srb]</th>     
+                  <th>Text[de]</th>          
+=======
                   <th>Text</th>     
+>>>>>>> 3fad32d4f67a4fb5f61fc8a6da4f18337e2a9cc7
                   <th></th>      
                   </tr>
             </thead>"; 
@@ -142,7 +148,13 @@ header("location:partial/admin.php");
             while($row = mysqli_fetch_array($result)) {
                 
                 echo "<tr>";
+<<<<<<< HEAD
+                echo "<td>" . $row['Text'] . "</td>";
+                echo "<td>" . $row['Text_SRB'] . "</td>";       
+                echo "<td>" . $row['Text_DE'] . "</td>";              
+=======
                 echo "<td>" . $row['Text'] . "</td>";       
+>>>>>>> 3fad32d4f67a4fb5f61fc8a6da4f18337e2a9cc7
                 echo "<td><i class=\"fa fa-trash-o del\" id=". $row['ID'] . "></i> &nbsp&nbsp&nbsp <i class=\"fa fa-pencil-square-o edit\" id=". $row['ID'] . "></i></td>";
                 echo "</tr>"; 
                 }
@@ -164,8 +176,23 @@ header("location:partial/admin.php");
             <form method="post" enctype="multipart/form-data" class="jumbotron form-group" action="InsertAboutUs.php" >
             <!-- image-preview-filename input [CUT FROM HERE]-->
             <fieldset>
+<<<<<<< HEAD
+                  <legend>Text [en]: </legend>
+                <!--<input type="text" id="text" name="text" class="form-control" required/>-->
+                <textarea id="text" name="text" class="form-control" rows="8" required></textarea>
+
+                <legend>Text [srb]: </legend>
+                <!--<input type="text" id="text" name="text" class="form-control" required/>-->
+                <textarea id="textSRB" name="textSRB" class="form-control" rows="8" required></textarea>
+
+                <legend>Text [de]: </legend>
+                <!--<input type="text" id="text" name="text" class="form-control" required/>-->
+                <textarea id="textDE" name="textDE" class="form-control" rows="8" required></textarea>
+
+=======
                   <legend>Text: </legend>
                 <input type="text" id="text" name="text" class="form-control" required/>
+>>>>>>> 3fad32d4f67a4fb5f61fc8a6da4f18337e2a9cc7
             <p id="btnSubNew">
             <input type="submit" id="btn_Upload" class="btn btn-primary btn-lg" value="Save"/>
             </p>

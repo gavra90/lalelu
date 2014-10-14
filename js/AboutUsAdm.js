@@ -57,6 +57,7 @@ $(function () {
 
 
     $(".edit").on("click", function () {
+        //alert("asd");
         var $this = $(this);
         var $id = $this.attr('id');
         $("#id").attr('value', $id);
@@ -64,8 +65,14 @@ $(function () {
 
         var $row = $this.parents('tr').children();
         var text = $($row[0]);
+        var textSRB = $($row[1]);
+        var textDE = $($row[2]);
 
-        $("#text").attr('value', text.text());
+        $("#text").text(text.text());
+        $("#textSRB").text(textSRB.text());
+        $("#textDE").text(textDE.text());
+
+      
 
         //$.ajax({
         //    url: "editEmployee.php",

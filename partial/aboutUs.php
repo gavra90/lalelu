@@ -65,7 +65,10 @@
             </div>
           </div>
         </div>
+<<<<<<< HEAD
+=======
 
+>>>>>>> 3fad32d4f67a4fb5f61fc8a6da4f18337e2a9cc7
       </div>
     </div>
          <!--kraj nav-->
@@ -101,9 +104,12 @@
                     </a>
                 </div>
             </div>
+<<<<<<< HEAD
+=======
 
 
 
+>>>>>>> 3fad32d4f67a4fb5f61fc8a6da4f18337e2a9cc7
          <!--<div class="menu row text-vertical-center">
                     <div id="menuBall1" class="menuBall">
                         <a href="/index.php" class="ball blueball">
@@ -189,8 +195,32 @@
     <div class="jumbotron ">
         <div class="container">
             <h1><?php echo $TEXT['aboutUS_title']?></h1>
+<<<<<<< HEAD
+            <p>
+               <?php
+                  $con=mysqli_connect("localhost","root","","lalalulu");
+                    if(mysqli_connect_error())
+                       echo mysqli_connect_error();        
+                    else{    
+                        $result = mysqli_query($con,"SELECT * FROM aboutus");  
+                        }
+                     while($row = mysqli_fetch_array($result)) {
+                         if($lan=="SRB"){
+                          $oNama=$row['Text_SRB'];   
+                         }else if($lan=="EN"){
+                          $oNama=$row['Text'];    
+
+                         }elseif($lan=="DE"){
+                             $oNama=$row['Text_DE']; 
+                         }
+                     }        
+                    echo $oNama;
+                ?>
+            </p>
+=======
             <p>We are proud to offer you quality education apps exclusively available through itunes.  All of our games are designed to work on Apple’s iPhone, iPod touch and iPad.</p>
             <p>Your child will learn through a concept called “errorless learning”.  As the name implies, errorless learning refers to teaching procedures that are designed in such a way that the learner does not have to, and does not, make repeated mistakes as he or she learns new information.  They are shown the appropriate response in the hope that they will get it correctly the next time.</p>
+>>>>>>> 3fad32d4f67a4fb5f61fc8a6da4f18337e2a9cc7
             <p><a href="/partial/contact.php?lan=<?php echo $lan?>" class="btn btn-primary btn-lg" role="button"><?php echo $TEXT['btn_aboutUs_Contact']?></a></p>
         </div>
         <!--staff-->
@@ -281,12 +311,15 @@
                 </div>
             </div>-->
         </div>
+<<<<<<< HEAD
+=======
 
 
 
 
 
 
+>>>>>>> 3fad32d4f67a4fb5f61fc8a6da4f18337e2a9cc7
 	</div>
 </div>
         <!--kraj staff-->
