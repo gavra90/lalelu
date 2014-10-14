@@ -98,11 +98,9 @@
                     </a>
                 </div>
                 <div id="menuBall4" class="menuBall">
-<<<<<<< HEAD
+
                     <a href="/partial/contact.php?lan=<?php echo $lan?>" class="ball blueball">
-=======
-                    <a href="partial/contact.php?lan=<?php echo $lan?>" class="ball blueball">
->>>>>>> 3fad32d4f67a4fb5f61fc8a6da4f18337e2a9cc7
+
                         <div class="menuText">
                             <?php echo($TEXT['contacts']); ?>
                         </div>
