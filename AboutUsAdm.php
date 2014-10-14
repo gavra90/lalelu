@@ -94,9 +94,9 @@
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 <li ><a href="/index3.php">News</a></li>
-                <li class="active"><a href="/employee.php">Employee</a></li>
+                <li ><a href="/employee.php">Employee</a></li>
                 <li><a href="/index4.php">Photo</a></li>
-                <li><a href="/AboutUsAdm.php">AboutUs</a></li>
+                <li class="active"><a href="/AboutUsAdm.php">AboutUs</a></li>
               </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="../logout.php">Log out</a></li>

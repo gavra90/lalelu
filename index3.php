@@ -111,7 +111,7 @@
 session_start();
 //echo $_SESSION["myusername"];
 if($_SESSION["myusername"] != "drasko"){
-header("location:partial/admin.php");
+    header("location:partial/admin.php");
 }
 ?>
 
