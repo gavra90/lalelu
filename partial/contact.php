@@ -162,10 +162,31 @@
                     <div class="panel-body text-center">
                         <h4><?php  echo ($TEXT['contact_adressOfice']); ?></h4>
                         <div>
-                        2217 Washington Blvd<br />
-                        Washington DC<br />
-                        #(703) 1234 1234<br />
-                        service@company.com<br />
+                            <?php
+                              $con=mysqli_connect("localhost","root","","lalalulu");
+                                if(mysqli_connect_error())
+                                    echo mysqli_connect_error();
+                                 else{
+    
+                                    $result = mysqli_query($con,"SELECT * FROM contact");
+                                     while($row = mysqli_fetch_array($result)) {
+                                         echo $row['Street'] . "<br>";
+                                         echo $row['City'] . "<br>";
+                                         echo $row['Phone'] . "<br>";
+                                         $mail = $row['Email'];
+                                         $lon=$row['Lon'];
+                                         $lat=$row['Lat'];
+                                         echo "<a href=mailto:'$mail'>" .$mail. "</a><br>";
+                                        
+                                         echo "<input type='text' id='cooLong' hidden value='$lon'/>";
+                                         echo "<input type='text' id='cooLat' hidden value='$lat'/>";
+
+
+                                     }
+                                 }
+                                mysqli_close($con);
+                            ?>
+                        
                         </div>
                         <hr />
                         <div id="map1" class="map">
@@ -192,7 +213,8 @@
 <script type="text/javascript">
     jQuery(function ($) {
         function init_map1() {
-            var myLocation = new google.maps.LatLng(44.801013, 20.522408);
+            //var myLocation = new google.maps.LatLng(44.801013, 20.522408);
+            var myLocation = new google.maps.LatLng($("#cooLong").val(),$("#cooLat").val());
             var mapOptions = {
                 center: myLocation,
                 zoom: 16

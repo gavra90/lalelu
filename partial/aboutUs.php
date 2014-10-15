@@ -94,7 +94,7 @@
                     </a>
                 </div>
                 <div id="menuBall4" class="menuBall">
-                    <a href="partial/contact.php?lan=<?php echo $lan?>" class="ball blueball">
+                    <a href="/partial/contact.php?lan=<?php echo $lan?>" class="ball blueball">
                         <div class="menuText">
                             <?php echo($TEXT['contacts']); ?>
                         </div>

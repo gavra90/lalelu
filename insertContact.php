@@ -27,13 +27,8 @@
     } 
 
     else{ //ovde radimo update        
-        if(!$update=mysqli_query($con,"UPDATE contact SET City='$city', Street='$street', Phone='$phone', Email='$email', Lon='$long ,Lat='$lati  WHERE ID='$id'")){
-                    echo $city;
-                    echo $email;
-                    echo $phone;
-                    echo $street;
-                    echo $lati;
-                    echo $long;
+        if(!$update=mysqli_query($con,"UPDATE contact SET City='$city', Street='$street', Phone='$phone', Email='$email', Lon='$long' ,Lat='$lati'  WHERE ID='$id'")){
+               
                     die(mysql_error());
                 }
             else{
