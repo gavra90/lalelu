@@ -13,7 +13,7 @@
         <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/plug-ins/a5734b29083/integration/jqueryui/dataTables.jqueryui.js"></script>
          <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-          <script type="text/javascript" charset="utf8" src="/js/AboutUsAdm.js"></script>
+          <script type="text/javascript" charset="utf8" src="/js/contactAdmin.js"></script>
         <script src="../js/inputFile.js"></script>
         <meta charset="utf-8" />
         <title></title>
@@ -54,9 +54,6 @@
     /*kraj za unos*/
     .del:hover {
         cursor: pointer;
-    }
-    .edit:hover {
-        cursor: pointer;
     } 
     .logo {
    
@@ -70,9 +67,7 @@
     background-size: cover;
     -o-background-size: cover;
 }
-    #id, #flag {
-        display: none;
-    }     
+           
         </style>
     </head>
     <body>
@@ -94,11 +89,11 @@
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 <li ><a href="/index3.php">News</a></li>
-                <li ><a href="/employee.php">Employee</a></li>
-                <li><a href="/index4.php">Photo</a></li>
-                <li><a href="/ContactAdmin.php">Contact</a></li>
-                <li class="active"><a href="/AboutUsAdm.php">AboutUs</a></li>
-                
+                <li><a href="/employee.php">Employee</a></li>
+                  <li><a href="/index4.php">Photo</a></li>
+                  <li class="active"><a href="/ContactAdmin.php">Contact</a></li>
+                  <li><a href="/AboutUsAdm.php">AboutUs</a></li>
+                    
               </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="../logout.php">Log out</a></li>
@@ -112,13 +107,13 @@
          <!--kraj nav-->
     <div class="container">
     <div class="page-header">
-        <h1>AboutUs <small>welcome Admin</small></h1>
+        <h1>Contact <small>welcome Admin</small></h1>
     </div>
 <?php
 session_start();
 //echo $_SESSION["myusername"];
 if($_SESSION["myusername"] != "drasko"){
-header("location:partial/admin.php");
+    header("location:partial/admin.php");
 }
 ?>
 
@@ -129,18 +124,19 @@ header("location:partial/admin.php");
             echo mysqli_connect_error();
          else{
     
-            $result = mysqli_query($con,"SELECT * FROM aboutus");
+            $result = mysqli_query($con,"SELECT * FROM contact");
             //"<select id=\"ID_FunkcijeZadatka\" name=\"ID_FunkcijeZadatka\" style=\"width:775px;\">"
             echo "<div class=\"table-responsive\">";
-            echo "<table id=\"tabelaEMP\" class=\"display dataTable table table-bordered table-responsive\">
+            echo "<table id=\"tabela\" class=\"display dataTable table table-bordered table-responsive\">
             <thead>
                   <tr>
-
-                  <th>Text[en]</th>
-                  <th>Text[srb]</th>     
-                  <th>Text[de]</th>        
-
-                  <th></th>      
+                  <th>City</th>
+                  <th>Street</th>
+                  <th>Phone</th>
+                  <th>Email</th>
+                  <th>Longitude[x]</th>
+                  <th>Latitude[y]</th> 
+                  <th></th>                 
                   </tr>
             </thead>"; 
                   echo "<tbody>";
@@ -148,11 +144,12 @@ header("location:partial/admin.php");
             while($row = mysqli_fetch_array($result)) {
                 
                 echo "<tr>";
-
-                echo "<td>" . $row['Text'] . "</td>";
-                echo "<td>" . $row['Text_SRB'] . "</td>";       
-                echo "<td>" . $row['Text_DE'] . "</td>";              
-
+                echo "<td>" . $row['City'] . "</td>";
+                echo "<td>" . $row['Street'] . "</td>"; 
+                echo "<td>" . $row['Phone'] . "</td>";
+                echo "<td>" . $row['Email'] . "</td>";               
+                echo "<td>" . $row['Lon'] . "</td>";
+                echo "<td>" . $row['Lat'] . "</td>";
                 echo "<td><i class=\"fa fa-trash-o del\" id=". $row['ID'] . "></i> &nbsp&nbsp&nbsp <i class=\"fa fa-pencil-square-o edit\" id=". $row['ID'] . "></i></td>";
                 echo "</tr>"; 
                 }
@@ -169,37 +166,40 @@ header("location:partial/admin.php");
 </div>   
 <div class="container">
     <div class="row"> 
-    <h3>Insert text</h3>   
+    <h3>Insert address</h3>   
         <div class="form" role="form">  
-            <form method="post" enctype="multipart/form-data" class="jumbotron form-group" action="InsertAboutUs.php" >
+            <form method="post" enctype="multipart/form-data" class="jumbotron form-group" action="insertContact.php" >
             <!-- image-preview-filename input [CUT FROM HERE]-->
             <fieldset>
-
-                  <legend>Text [en]: </legend>
-                <!--<input type="text" id="text" name="text" class="form-control" required/>-->
-                <textarea id="text" name="text" class="form-control" rows="8" required></textarea>
-
-                <legend>Text [srb]: </legend>
-                <!--<input type="text" id="text" name="text" class="form-control" required/>-->
-                <textarea id="textSRB" name="textSRB" class="form-control" rows="8" required></textarea>
-
-                <legend>Text [de]: </legend>
-                <!--<input type="text" id="text" name="text" class="form-control" required/>-->
-                <textarea id="textDE" name="textDE" class="form-control" rows="8" required></textarea>
-
-
+                  <legend>City: </legend>
+                <input type="text" name="city" id="city" class="form-control" required/>    
+                <legend>Street: </legend>
+                <input type="text" name="street" id="street" class="form-control" required/>
+                <legend>Phone: </legend>
+                <input type="tel" name="phone" id="phone" class="form-control" required/>              
+                <legend>Email: </legend>
+                <input type="email" name="email" id="email" class="form-control" required/>
+                <br>
+                <br>
+                    <a href="https://www.google.rs/maps?source=tldso">Google Maps</a>
+                <br>
+                <br>
+                <legend>Longitude[x]: </legend>
+                <input type="text" name="long" id="long" class="form-control" required/>
+                <legend>Latitude[y]: </legend>
+                <input type="text" name="lati" id="lati" class="form-control" required/>
+                
+           
             <p id="btnSubNew">
             <input type="submit" id="btn_Upload" class="btn btn-primary btn-lg" value="Save"/>
             </p>
             </fieldset>  
-                <input id="flag" name="flag" type="text" value="0"/>  
-                <input id="id" name="id" type="text"/>      
+                <input id="flag" name="flag" type="text" value="0" hidden/>  
+                <input id="id" name="id" type="text" hidden/>       
         </form>
         </div>
     </div>
-</div>        <div class="container">
-
-</div>
+</div>        
     </body>
 </html>
 
