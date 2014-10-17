@@ -54,12 +54,12 @@
               </button>
               <a class="navbar-brand logo" href="#"></a>
             </div>
-           <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="#"><?php echo($TEXT['home']); ?></a></li>
-                <li><a href="/partial/aboutUs.php"><?php echo($TEXT['aboutUs']); ?></a></li>
-                  <li><a href="#contact"><?php echo($TEXT['photo']); ?></a></li>
-                <li><a href="partial/contact.html"><?php echo($TEXT['contacts']); ?></a></li>
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About us</a></li>
+                  <li><a href="#contact">Photo</a></li>
+                <li><a href="partial/contact.html">Contact</a></li>
                 
               </ul>
             </div>
