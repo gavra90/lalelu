@@ -7,6 +7,13 @@
 
     $title = mysqli_real_escape_string($con,$_POST['title']);
     $content =mysqli_real_escape_string($con,$_POST['content']);
+
+    $title_srb = mysqli_real_escape_string($con,$_POST['title_srb']);
+    $content_srb =mysqli_real_escape_string($con,$_POST['content_srb']);
+
+    //$title_de = mysqli_real_escape_string($con,$_POST['title_de']);
+    //$content_de =mysqli_real_escape_string($con,$_POST['content_de']);
+
     $image=NULL;
 
     if($_FILES['photo']['name']!=NULL){
@@ -20,7 +27,7 @@
        //      echo "That's not an image";
        // else{
               
-        if(!$insert=mysqli_query($con,"INSERT INTO news (Content,Image,Title) VALUES ('$content','$image','$title')")){
+        if(!$insert=mysqli_query($con,"INSERT INTO news (Content,Image,Title,Content_SRB,Title_SRB) VALUES ('$content','$image','$title','$content_srb','$title_srb')")){
             echo mysql_error();
 
         }

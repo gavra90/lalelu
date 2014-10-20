@@ -87,7 +87,7 @@
                     </a>
                 </div>
                 <div id="menuBall3" class="menuBall">
-                    <a href="/partial/photo.php?lan=<?php echo $lan?>" class="ball blueball">
+                    <a href="#" class="ball blueball">
                         <div class="menuText">
                             <?php echo($TEXT['photo']); ?>
                         </div>

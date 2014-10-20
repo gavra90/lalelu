@@ -62,7 +62,7 @@
     /*padding-top: 17px;
     margin-right: 50px;*/
     background: url(../img/logo.jpg) no-repeat center center scroll;
-    /*-webkit-background-size: cover;*/
+    -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
@@ -91,9 +91,12 @@
                 <li class="active"><a href="/index3.php">News</a></li>
                 <li><a href="/employee.php">Employee</a></li>
                   <li><a href="/index4.php">Photo</a></li>
+                    <li><a href="/ContactAdmin.php">Contact</a></li>
+                  <li><a href="/AboutUsAdm.php">AboutUs</a></li>
+                 
               </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Log out</a></li>
+                    <li><a href="../logout.php">Log out</a></li>
                 </ul>
             </div>
           </div>
@@ -110,7 +113,7 @@
 session_start();
 //echo $_SESSION["myusername"];
 if($_SESSION["myusername"] != "drasko"){
-header("location:partial/admin.php");
+    header("location:partial/admin.php");
 }
 ?>
 
@@ -127,8 +130,10 @@ header("location:partial/admin.php");
             echo "<table id=\"tabela\" class=\"display dataTable table table-bordered table-responsive\">
             <thead>
                   <tr>
-                  <th>Title</th>
-                  <th>Content</th>
+                  <th>Title[en]</th>
+                  <th>Content[en]</th>
+                   <th>Title[srb]</th>
+                  <th>Content[srb]</th>
                   <th>Date</th>
                   <th>Photo</th>
                   <th>Delete</th>
@@ -140,7 +145,9 @@ header("location:partial/admin.php");
                 
                 echo "<tr>";
                 echo "<td>" . $row['Title'] . "</td>";
-                echo "<td>" . $row['Content'] . "</td>";               
+                echo "<td>" . $row['Content'] . "</td>"; 
+                 echo "<td>" . $row['Title_SRB'] . "</td>";
+                echo "<td>" . $row['Content_SRB'] . "</td>";               
                 echo "<td>" . $row['Date'] . "</td>";
                 if($row['Image']!=NULL)
                     echo "<td><i class=\"fa fa-camera\"></i></td>";
@@ -167,12 +174,28 @@ header("location:partial/admin.php");
             <form method="post" enctype="multipart/form-data" class="jumbotron form-group" action="insertNews.php" >
             <!-- image-preview-filename input [CUT FROM HERE]-->
             <fieldset>
-                  <legend>Title: </legend>
+                  <legend>Title [en]: </legend>
                 <input type="text" name="title" class="form-control" required/>
                 <!--Prezime:
                 <input type="text" name="" required/>-->
-                <legend>Content: </legend>
+                <legend>Content [en]: </legend>
                 <textarea name="content" class="form-control" required></textarea>
+
+                     <legend>Title [srb]: </legend>
+                <input type="text" name="title_srb" class="form-control" />
+                <!--Prezime:
+                <input type="text" name="" required/>-->
+                <legend>Content [srb]: </legend>
+                <textarea name="content_srb" class="form-control" ></textarea>
+
+                     <legend>Title [de]: </legend>
+                <input type="text" name="title_de" class="form-control" />
+                <!--Prezime:
+                <input type="text" name="" required/>-->
+                <legend>Content [de]: </legend>
+                <textarea name="content_de" class="form-control" ></textarea>
+
+
             <legend>Image Upload</legend>
             <div class="input-group image-preview">
                 <input type="text" name="photo" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->

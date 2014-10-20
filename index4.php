@@ -62,7 +62,7 @@
     /*padding-top: 17px;
     margin-right: 50px;*/
     background: url(../img/logo.jpg) no-repeat center center scroll;
-    /*-webkit-background-size: cover;*/
+    -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
@@ -125,14 +125,13 @@ header("location:partial/admin.php");
             echo mysqli_connect_error();
          else{
     
-           if($result = mysqli_query($con,"SELECT photos.photo as photo, photos.Id as Id, albums.Name as album FROM photos join albums on photos.album_id = albums.ID order by albums.Name")){
+           if($result = mysqli_query($con,"SELECT * FROM photos")){
             //"<select id=\"ID_FunkcijeZadatka\" name=\"ID_FunkcijeZadatka\" style=\"width:775px;\">"
             echo "<div class=\"table-responsive\">";
             echo "<table id=\"tabela\" class=\"display dataTable table table-bordered table-responsive\">
             <thead>
                   <tr>                  
                   <th>Photo</th>
-                  <th>Album name</th>
                   <th>Delete</th>
                   </tr>
             </thead>"; 
@@ -141,13 +140,14 @@ header("location:partial/admin.php");
             while($row = mysqli_fetch_array($result)) {
                 
                 echo "<tr>";
-
+                //echo "<td>" . $row['Title'] . "</td>";
+                //echo "<td>" . $row['Content'] . "</td>";               
+                //echo "<td>" . $row['Date'] . "</td>";
                 if($row['photo']!=NULL)
                 echo '<td style="width:200px"><img style="width:130px; height:115px;" src="data:image/jpeg;base64,' . base64_encode( $row['photo'] ) . '" /></td>';
-
+                   // echo "<td><i class=\"fa fa-camera\"></i></td>";
                 else
                     echo "<td><i class=\"fa fa-times\"></i></td>";
-                    echo "<td>". $row['album'] . "</td>";
                 echo "<td><i class=\"fa fa-trash-o del\" id=". $row['Id'] . "></i></td>";
                 echo "</tr>"; 
                 }
@@ -164,7 +164,7 @@ header("location:partial/admin.php");
         ?>
         <div class="container">
     <div class="row"> 
-    <h3>Insert photos</h3>   
+    <h3>Insert news</h3>   
         <div class="form" role="form">  
             <form method="post" enctype="multipart/form-data" class="jumbotron form-group" action="insertPhoto.php" >
             <!-- image-preview-filename input [CUT FROM HERE]-->
@@ -184,57 +184,8 @@ header("location:partial/admin.php");
                         <input type="file" accept="image/png, image/jpeg, image/gif" name="photo"/> <!-- rename it -->
                     </div>
                     <!--<p class="help-block">Example block-level help text here.</p>-->
-                    
                 </div>
             </div><!-- /input-group image-preview [TO HERE]--> 
-                <div>                        
-        <?php                            
-            $con=mysqli_connect("localhost","root","","lalalulu");
-            if(mysqli_connect_error())
-                echo mysqli_connect_error();
-            else{
-    
-                if($result = mysqli_query($con,"SELECT * from albums")){
-
-                    echo '<select id="album" name="album" class="form-control image-preview-filename" required>';     
-
-                    while($row = mysqli_fetch_array($result)) {
-                        echo "<option value=". $row['ID'] . ">" . $row['Name'] . "</option>"; 
-                    }
-
-                        echo "</select>";
-                        echo "</div>";
-
-                }
-                else
-                echo "No photo table!";
-            }
-            mysqli_close($con);        
-        ?>
-                    </div>
-            <p id="btnSubNew">
-            <input type="submit" id="btn_Upload" class="btn btn-primary btn-lg" value="Save"/>
-            </p>
-            </fieldset>        
-        </form>
-        </div>
-    </div>
-</div>
-</div>
-<div class="container">
-    <div class="row"> 
-    <h3>Insert albums</h3>   
-        <div class="form" role="form">  
-            <form method="post" enctype="multipart/form-data"  action="InsertAlbum.php" >
-            <!-- image-preview-filename input [CUT FROM HERE]-->
-            <fieldset>                  
-            
-            <div class="jumbotron form-group">
-                
-                <input type="text" name="name" id="name" class="form-control image-preview-filename" required> <!-- don't give a name === doesn't send on POST/GET -->
-                
-            </div><!-- /input-group image-preview [TO HERE]-->                                       
-        
             <p id="btnSubNew">
             <input type="submit" id="btn_Upload" class="btn btn-primary btn-lg" value="Save"/>
             </p>

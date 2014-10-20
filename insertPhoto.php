@@ -5,9 +5,8 @@
    
     $file = $_FILES['photo']['tmp_name'];
     
-    $album = mysqli_real_escape_string($con,$_POST['album']);
+    //$title = mysqli_real_escape_string($con,$_POST['title']);
     //$content =mysqli_real_escape_string($con,$_POST['content']);
-    //echo $album;
     $image=NULL;
     //echo $image;
     if($_FILES['photo']['name']!=NULL){        
@@ -17,11 +16,11 @@
         //echo $con;
 
     }                
-        if(!$insert=mysqli_query($con,"INSERT INTO photos (photo, album_id) VALUES ('$image', '$album')")){
+        if(!$insert=mysqli_query($con,"INSERT INTO photos (photo) VALUES ('$image')")){
             echo mysql_error();
         }
         else{
-            //echo "asdasddafdsf";
+            echo "asdasddafdsf";
           echo "<script>window.location.assign('index4.php')</script>";
         }
     mysqli_close($con); 
